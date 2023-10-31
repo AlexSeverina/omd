@@ -86,10 +86,8 @@ class TfidfTransformer:
                           for row in cnt_matrix]
         words_cnts = [sum([row[i] for row in docs_with_word])
                       for i in range(word_num)]
-        return [
-            round(math.log((doc_num + 1) / (word_cnt + 1)) + 1, 3)
-            for word_cnt in words_cnts
-        ]
+        return [round(math.log((doc_num + 1) / (word_cnt + 1)) + 1, 3)
+                for word_cnt in words_cnts]
 
     def fit_transform(self, cnt_matrix: list[list]) -> list[list]:
         """
@@ -100,10 +98,8 @@ class TfidfTransformer:
         """
         tf_matrix = self.tf_transform(cnt_matrix)
         idf_matrix = self.idf_transform(cnt_matrix)
-        return [
-            [round(tf * idf, 3) for tf, idf in zip(row, idf_matrix)]
-            for row in tf_matrix
-        ]
+        return [[round(tf * idf, 3) for tf, idf in zip(row, idf_matrix)]
+                for row in tf_matrix]
 
 
 class TfidfVectorizer(CountVectorizer):
