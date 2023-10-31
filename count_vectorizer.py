@@ -38,7 +38,8 @@ class CountVectorizer:
             text_count = {word: 0 for word in words_set}
             for word in text_words:
                 text_count[word] += 1
-            self.dt_matrix.append([text_count[word] for word in self.feature_names])
+            self.dt_matrix.append([text_count[word]
+                                   for word in self.feature_names])
 
         return self.dt_matrix
 
@@ -81,8 +82,10 @@ class TfidfTransformer:
         doc_num = len(cnt_matrix)
         word_num = len(cnt_matrix[0])
 
-        docs_with_word = [[1 if x > 0 else 0 for x in row] for row in cnt_matrix]
-        words_cnts = [sum([row[i] for row in docs_with_word]) for i in range(word_num)]
+        docs_with_word = [[1 if x > 0 else 0 for x in row]
+                          for row in cnt_matrix]
+        words_cnts = [sum([row[i] for row in docs_with_word])
+                      for i in range(word_num)]
         return [
             round(math.log((doc_num + 1) / (word_cnt + 1)) + 1, 3)
             for word_cnt in words_cnts
