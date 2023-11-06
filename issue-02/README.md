@@ -1,0 +1,1 @@
+python -m pytest -v morse_test.py
