@@ -1,0 +1,11 @@
+>>> python -m unittest -v test_one_hot_encoder.py
+
+test_empty (test_one_hot_encoder.TestFitTransform) ... ok
+test_multiple_strings (test_one_hot_encoder.TestFitTransform) ... ok
+test_one_string (test_one_hot_encoder.TestFitTransform) ... ok
+test_type (test_one_hot_encoder.TestFitTransform) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

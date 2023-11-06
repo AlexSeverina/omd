@@ -1,0 +1,42 @@
+>>> python -m pytest -v -s test_what_is_year_now.py --cov=what_is_year_now
+
+=========================================================================== test session starts ============================================================================
+platform darwin -- Python 3.9.7, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/aleksandraistomina/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/aleksandraistomina/PycharmProjects/omd/issue-05
+plugins: anyio-2.2.0, cov-4.1.0
+collected 3 items
+
+test_what_is_year_now.py::TestYear::test_1984 PASSED
+test_what_is_year_now.py::TestYear::test_1999 PASSED
+test_what_is_year_now.py::TestYear::test_2012 PASSED
+
+---------- coverage: platform darwin, python 3.9.7-final-0 -----------
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+what_is_year_now.py      19      0   100%
+-----------------------------------------
+TOTAL                    19      0   100%
+
+
+============================================================================ 3 passed in 2.85s =============================================================================
+
+
+
+
+
+>>> python -m pytest --cov . --cov-report html
+
+=========================================================================== test session starts ============================================================================
+platform darwin -- Python 3.9.7, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: /Users/aleksandraistomina/PycharmProjects/omd/issue-05
+plugins: anyio-2.2.0, cov-4.1.0
+collected 3 items
+
+test_what_is_year_now.py ...                                                                                                                                         [100%]
+
+---------- coverage: platform darwin, python 3.9.7-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+
+============================================================================ 3 passed in 0.88s =============================================================================

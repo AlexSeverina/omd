@@ -1,0 +1,14 @@
+>>> python -m pytest -v morse_test.py
+
+=========================================================================== test session starts ============================================================================
+platform darwin -- Python 3.9.7, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/aleksandraistomina/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/aleksandraistomina/PycharmProjects/omd/issue-02
+plugins: anyio-2.2.0
+collected 3 items
+
+morse_test.py::test_decode[... --- ...-SOS] PASSED                                                                                                                   [ 33%]
+morse_test.py::test_decode[... .- .. .--. .--. ..- .- -.- .. ...- .. -.- .- ..- .--. .--. .. .- ...-SAIPPUAKIVIKAUPPIAS] PASSED                                      [ 66%]
+morse_test.py::test_decode[... .... .-.. -.-- .- .--. .--SHLYAPA] PASSED                                                                                             [100%]
+
+============================================================================ 3 passed in 0.02s =============================================================================

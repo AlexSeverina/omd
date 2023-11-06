@@ -1,0 +1,15 @@
+>>> python -m pytest -v test_one_hot_encoder.py
+
+=========================================================================== test session starts ============================================================================
+platform darwin -- Python 3.9.7, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/aleksandraistomina/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/aleksandraistomina/PycharmProjects/omd/issue-04
+plugins: anyio-2.2.0
+collected 4 items
+
+test_one_hot_encoder.py::test_raises_error PASSED                                                                                                                    [ 25%]
+test_one_hot_encoder.py::test_one_string PASSED                                                                                                                      [ 50%]
+test_one_hot_encoder.py::test_multiple_string PASSED                                                                                                                 [ 75%]
+test_one_hot_encoder.py::test_one_word_string PASSED                                                                                                                 [100%]
+
+============================================================================ 4 passed in 0.01s =============================================================================
