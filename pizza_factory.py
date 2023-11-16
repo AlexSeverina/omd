@@ -25,9 +25,7 @@ class Pizza:
         self.name = name
         self.icon = icon
         self.recipe = recipe
-
-        self.size = PizzaSize.BigSize
-        self.set_size(size)
+        self.size = size
 
     def __eq__(self, other):
         """
@@ -47,13 +45,9 @@ class Pizza:
         """
         return f'{self.name} {self.icon}: {", ".join(self.recipe)}'
 
-    def set_size(self, size: PizzaSize):
-        """
-        Allows to set size of the pizza.
-
-        :param size: size to set
-        """
-        self.size = PizzaSize(size)
+    @classmethod
+    def get_existing_pizza_types(cls):
+        return cls.__subclasses__()
 
 
 class Margherita(Pizza):

@@ -1,7 +1,5 @@
 import click
-import pizza_factory
 from pizza_factory import PizzaSize, Pizza, bake, deliver, pickup
-import inspect
 
 
 @click.group()
@@ -21,13 +19,12 @@ def order(pizza: str, delivery: bool, size: str):
     :param delivery: flag to distinguish delivery from pick up
     :param size: size of pizza
     """
-    possible_pizzas = get_menu()
-
+    possible_pizzas = Pizza.get_existing_pizza_types()
     if pizza not in [p.name.lower() for p in possible_pizzas]:
         print('You cannot order this pizza. Try another one. '
               'Call for menu to get list of pizzas that are available today.')
         return
-    cur_pizza = [p for p in possible_pizzas if p.name.lower() == pizza][0]
+    pizza_template = [p for p in possible_pizzas if p.name.lower() == pizza][0]
 
     possible_pizza_sizes = [e.value for e in PizzaSize]
     if size not in possible_pizza_sizes:
@@ -35,13 +32,13 @@ def order(pizza: str, delivery: bool, size: str):
               f'{", ".join(possible_pizza_sizes)}.')
         print('Try to order pizza of another size.')
         return
-    cur_pizza.set_size(size=PizzaSize(size))
+    pizza = pizza_template(size=PizzaSize(size))
 
-    bake(cur_pizza)
+    bake(pizza)
     if delivery:
-        deliver(cur_pizza)
+        deliver(pizza)
     else:
-        pickup(cur_pizza)
+        pickup(pizza)
 
 
 @cli.command()
@@ -49,22 +46,8 @@ def menu():
     """
     Prints menu.
     """
-    for pizza in get_menu():
-        print(f'- {pizza.dict()}')
-
-
-def get_menu() -> list:
-    """
-    Creates list of pizzas from the menu.
-    All pizza-children from Pizza class are included.
-
-    :return: list of pizzas
-    """
-    pizza_list = list()
-    for name, obj in inspect.getmembers(pizza_factory):
-        if hasattr(obj, "__bases__") and Pizza in obj.__bases__:
-            pizza_list.append(obj())
-    return pizza_list
+    for pizza in Pizza.get_existing_pizza_types():
+        print(f'- {pizza().dict()}')
 
 
 if __name__ == '__main__':
