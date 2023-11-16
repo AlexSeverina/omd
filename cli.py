@@ -21,7 +21,7 @@ def order(pizza: str, delivery: bool, size: str):
     """
     possible_pizzas = Pizza.get_existing_pizza_types()
     if pizza not in [p.name.lower() for p in possible_pizzas]:
-        print('You cannot order this pizza. Try another one. '
+        print('You cannot order this pizza. Try another one.'
               'Call for menu to get list of pizzas that are available today.')
         return
     pizza_template = [p for p in possible_pizzas if p.name.lower() == pizza][0]
@@ -50,5 +50,5 @@ def menu():
         print(f'- {pizza().dict()}')
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     cli()
